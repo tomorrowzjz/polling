@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const eventSource = new EventSource('/sse');
+
+        eventSource.onmessage = (event) => {
+            console.log('股票价格更新：', event.data);
+        };
+
+        eventSource.onerror = (error) => {
+            console.error('发生错误：', error);
+        }
+    </script>
+</body>
+</html>

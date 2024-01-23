@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let interval = setInterval(() => {
+            fetch('/polling')
+                .then(response => response.json())
+                .then(data => {
+                console.log('最新天气：', data);
+                })
+                .catch(error => {
+                if(interval){
+                    clearInterval(interval)
+                }
+                console.error('发生错误：', error);
+                });
+            }, 5000);
+    </script>
+</body>
+</html>

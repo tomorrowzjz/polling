@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const socket = new WebSocket('ws://10.254.67.2:8081/connection/');
+
+
+        socket.addEventListener('message', (event) => {
+            console.log('收到消息：', event.data);
+        });
+
+        socket.onopen = (event) => {
+            console.log('WebSocket connection opened');
+            // 在这里发送你的消息
+            socket.send('Hello, WebSocket!');
+            
+        };
+        // setInterval(() => {
+        //         socket.send(Math.random());
+        //     }, 1000);
+    </script>
+</body>
+</html>
